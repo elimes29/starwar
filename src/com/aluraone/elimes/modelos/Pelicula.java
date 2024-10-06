@@ -1,7 +1,6 @@
 package com.aluraone.elimes.modelos;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,12 +10,13 @@ public class Pelicula {
     private String mensajeInicial;
     private String director;
     private String productor;
-    private Date fechaLanzamiento;
+    private String fechaLanzamiento;
     private List<String> personajes;
     private List<String> planetas;
     private List<String> naves;
     private List<String> vehiculos;
     private List<String> especies;
+
 
     public Pelicula(PeliculaOmdb peliculaOmdb) throws ParseException {
         this.titulo = peliculaOmdb.title();
@@ -24,7 +24,7 @@ public class Pelicula {
         this.mensajeInicial = peliculaOmdb.opening_crawl();
         this.director = peliculaOmdb.director();
         this.productor = peliculaOmdb.producer();
-        this.fechaLanzamiento = formato.parse(String.valueOf(peliculaOmdb.release_date()));
+        this.fechaLanzamiento = peliculaOmdb.release_date();
         this.personajes = peliculaOmdb.characters();
         this.planetas = peliculaOmdb.planets();
         this.naves = peliculaOmdb.starships();
@@ -72,11 +72,11 @@ public class Pelicula {
         this.productor = productor;
     }
 
-    public Date getFechaLanzamiento() {
+    public String getFechaLanzamiento() {
         return fechaLanzamiento;
     }
 
-    public void setFechaLanzamiento(Date fechaLanzamiento) {
+    public void setFechaLanzamiento(String fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
